@@ -23,6 +23,10 @@ get_header();
 
 			get_template_part( 'template-parts/content', 'page' );
 
+			echo '<h1>ACF Custom Field Data</h1>';
+			$field_value = get_field('custom_text');
+			echo "<p>{$field_value}</p>";
+
 			// If comments are open or we have at least one comment, load up the comment template.
 			if ( comments_open() || get_comments_number() ) :
 				comments_template();

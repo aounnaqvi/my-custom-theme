@@ -176,3 +176,28 @@ if ( defined( 'JETPACK__VERSION' ) ) {
 	require get_template_directory() . '/inc/jetpack.php';
 }
 
+
+// Custom Theme Code
+if( function_exists('acf_add_local_field_group') ) {
+    acf_add_local_field_group(array(
+        'key' => 'group_custom_fields',
+        'title' => 'Custom Fields',
+        'fields' => array(
+            array(
+                'key' => 'field_custom_text',
+                'label' => 'Custom Text',
+                'name' => 'custom_text',
+                'type' => 'text',
+            ),
+        ),
+        'location' => array(
+            array(
+                array(
+                    'param' => 'post_type',
+                    'operator' => '==',
+                    'value' => 'page',
+                ),
+            ),
+        ),
+    ));
+}
